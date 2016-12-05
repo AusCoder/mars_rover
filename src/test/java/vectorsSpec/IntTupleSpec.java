@@ -19,4 +19,9 @@ public class IntTupleSpec {
 
         assertTrue("IntTuple add: ", t3.equals(new IntTuple(1, 9)));
     }
+    @Test public void testEqality() {
+        IntTuple t1 = new IntTuple(1,9);
+        IntTuple t2 = new IntTuple(1,9);
+        assertTrue("IntTuple equality: ", t1.equals(t2));
+    }
 }
