@@ -1,4 +1,9 @@
+package thingsOnMarsSpec;
+
 import org.junit.Test;
+
+import thingsOnMars.Rover;
+import thingsOnMars.Plateau;
 
 public class PlateauSpec {
     @Test(expected=RuntimeException.class)

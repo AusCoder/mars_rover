@@ -1,3 +1,5 @@
+package thingsOnMars;
+
 import vectors.IntTuple;
 import vectors.Direction;
 

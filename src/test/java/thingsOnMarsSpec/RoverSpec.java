@@ -1,7 +1,11 @@
+package thingsOnMarsSpec;
+
 import org.junit.Test;
 import vectors.IntTuple;
-
 import static org.junit.Assert.assertTrue;
+
+import thingsOnMars.Rover;
+import thingsOnMars.Plateau;
 
 public class RoverSpec {
     @Test(expected=RuntimeException.class)
