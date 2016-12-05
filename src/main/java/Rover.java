@@ -18,6 +18,9 @@ public class Rover {
         this.plateau = plat;
     }
 
+    /*
+    method to move the Rover based on a command
+     */
     public void move(char command) throws RuntimeException {
         switch (command) {
             case 'M':
@@ -40,6 +43,9 @@ public class Rover {
         }
     }
 
+    /*
+    method to check if Rover will fall off plateau
+     */
     private boolean willFall() {
         if (this.position.x + this.direction.x < 0) {
             return true;
@@ -53,6 +59,9 @@ public class Rover {
         return false;
     }
 
+    /*
+    method to check if Rover will collide with another rover
+     */
     private boolean willCollide() {
         for (Rover rov : plateau.rovers) {
             int x = rov.getPosition().x;

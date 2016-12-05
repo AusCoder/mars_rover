@@ -19,7 +19,7 @@ public class Direction extends IntTuple {
             case 'W': out = new IntTuple(-1,0);
                 break;
             default:
-                throw new RuntimeException("bad initial direction!");
+                throw new RuntimeException("bad initial direction: " + d);
         }
         return out;
     }

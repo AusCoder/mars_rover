@@ -4,6 +4,16 @@ import java.io.BufferedReader;
 import java.util.List;
 import java.util.LinkedList;
 
+/*
+Code structure:
+2 main classes: Plateau and Rover
+Plateau holds a size and a list of Rovers, it also performs some collision checks when a new Rover is added.
+Rover holds position and direction and a reference to the plateau it sits on.
+Rover interprets move commands: it first checks for valid move, then makes the move.
+
+The vectors package contains some useful classes for representing positions and directions.
+ */
+
 public class Main {
     public static void main(String[] args) {
         BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
@@ -16,6 +26,7 @@ public class Main {
                 Integer boundX = Integer.parseInt(splitInputLine[0]);
                 Integer boundY = Integer.parseInt(splitInputLine[1]);
 
+                /* create new plateau and a list to store the rovers move strings */
                 Plateau plateau = new Plateau(boundX, boundY);
                 List<String> listOfMoves =  new LinkedList<>();
                 
