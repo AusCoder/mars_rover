@@ -21,8 +21,11 @@ public class Rover {
     public void move(char command) throws RuntimeException {
         switch (command) {
             case 'M':
-                if (!this.canMove()) {
-                    throw new RuntimeException("we fell off the plateau! current state: " + this.toString());
+                if (this.willFall()) {
+                    throw new RuntimeException("arrrrgh! we fell off the plateau! position: " + this.toString());
+                }
+                if (this.willCollide()) {
+                    throw new RuntimeException("booooom! we ran into another rover! position: " + this.toString());
                 }
                 this.position.add(this.direction);
                 break;
@@ -33,29 +36,40 @@ public class Rover {
                 this.direction.rotateRight();
                 break;
             default:
-                throw new RuntimeException("unknown move command: " + command);
+                throw new RuntimeException("this does not compute! unknown command: " + command);
         }
     }
 
-    private boolean canMove() {
+    private boolean willFall() {
         if (this.position.x + this.direction.x < 0) {
-            return false;
+            return true;
         } else if (this.position.x + this.direction.x > this.plateau.boundX) {
-            return false;
+            return true;
         } else if (this.position.y + this.direction.y > this.plateau.boundY) {
-            return false;
+            return true;
         } else if (this.position.y + this.direction.y < 0) {
-            return false;
+            return true;
         }
-        return true;
+        return false;
+    }
+
+    private boolean willCollide() {
+        for (Rover rov : plateau.rovers) {
+            int x = rov.getPosition().x;
+            int y = rov.getPosition().y;
+            if (this.position.x + this.direction.x == x && this.position.y + this.direction.y == y) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
     public String toString() {
-        return String.format("%d %d %c ", this.position.x, this.position.y, this.convertDirection());
+        return String.format("%d %d %c ", this.position.x, this.position.y, this.convertDirectionToChar());
     }
 
-    private char convertDirection() {
+    private char convertDirectionToChar() {
         int x = this.direction.x;
         int y = this.direction.y;
         if (x == 0 && y == 1) {
