@@ -10,9 +10,9 @@ Has reference to a Plateau object.
 It interprets movement commands that modify its internal state.
  */
 public class Rover {
-    private IntTuple position;
-    private Direction direction;
-    private Plateau plateau;
+    IntTuple position;
+    Direction direction;
+    Plateau plateau;
 
     public Rover(int x, int y, char d, Plateau plat) {
         this.position = new IntTuple(x,y);
@@ -66,9 +66,7 @@ public class Rover {
      */
     private boolean willCollide() {
         for (Rover rov : plateau.rovers) {
-            int x = rov.getPosition().x;
-            int y = rov.getPosition().y;
-            if (this.position.x + this.direction.x == x && this.position.y + this.direction.y == y) {
+            if (this.position.x + this.direction.x == rov.position.x && this.position.y + this.direction.y == rov.position.y) {
                 return true;
             }
         }
