@@ -18,6 +18,3 @@ $ java -jar build/libs/mars_rover_all.jar < test_input.txt
 ```
 
 If you use Windows then you can use the `gradlew.bat` or use another [operating system.](https://wiki.archlinux.org/index.php/installation_guide)
-
-### Improvements
-* put Rover and Plateau in own package and make variables package-private for easier use
